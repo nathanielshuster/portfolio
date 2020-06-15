@@ -3,18 +3,13 @@ import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components'
 
 const Styles = styled.div`
-  .navbar {
-    background-color: #5cdb95;
-  }
-
   .navbar-brand, .navbar-nav .nav-link {
     font-family: din-2014, sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #edf5e1;
-
+    color: #05386b;
     &:hover {
-      color: #05386b;
+      color: #edf5e1;
     }
   }
 
@@ -23,11 +18,8 @@ const Styles = styled.div`
     padding: 4px 0px
   }
 
-  .navbar-toggler:focus,
-  .navbar-toggler:active,
-  .navbar-toggler-icon:focus {
+  .navbar-toggler:focus {
     outline: none;
-    box-shadow: none;
   }
 
   .nav-link {
@@ -43,9 +35,9 @@ export const NavigationBar = () => (
       <Navbar.Collapse>
         <Nav className="ml-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/">Projects</Nav.Link>
-          <Nav.Link href="/">About</Nav.Link>
-          <Nav.Link href="/">Contact</Nav.Link>
+          <Nav.Link href="/projects">Projects</Nav.Link>
+          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/contact">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
