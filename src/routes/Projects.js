@@ -1,10 +1,23 @@
 import React from 'react';
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
 import { PageHeader } from '../components/PageHeader'
+import styled from 'styled-components'
+
+import bt_events_lt from '../assets/bt_events_lt.png'
+import bt_odds_lt from '../assets/bt_odds_lt.png'
+
+import wm_home_lt from '../assets/wm_home_lt.png'
+import wm_search_lt from '../assets/wm_search_lt.png'
+
+const Styles = styled.div`
+  .carousel-indicators li {
+    visibility: hidden;
+  }
+`;
 
 export const Projects = () => {
   return (
-    <>
+    <Styles>
       <PageHeader heading="Nathaniel Shuster" sub="Full Stack Web Developer" />
       <Container>
         <Row>
@@ -13,42 +26,35 @@ export const Projects = () => {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="holder.js/800x400?text=First slide&bg=373940"
-                  alt="First slide"
+                  src={bt_events_lt}
+                  alt="WeatherMan"
                 />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="holder.js/800x400?text=Second slide&bg=282c34"
-                  alt="Third slide"
+                  src={bt_odds_lt}
+                  alt="WeatherMan"
                 />
-
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="holder.js/800x400?text=Third slide&bg=20232a"
-                  alt="Third slide"
+                  src={wm_home_lt}
+                  alt="WeatherMan"
                 />
-
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={wm_search_lt}
+                  alt="WeatherMan"
+                />
               </Carousel.Item>
             </Carousel>
           </Col>
         </Row>
       </Container>
-    </>
+    </Styles>
   )
 }

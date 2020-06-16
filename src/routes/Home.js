@@ -5,6 +5,20 @@ import styled from 'styled-components';
 import resume from '../assets/ns_resume.pdf'
 
 const Styles = styled.div`
+  .hello {
+    font-family: din-2014, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #05386b;
+  }
+
+  .welcome {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #edf5e1;
+  }
+
   .button-custom {
     font-family: din-2014, sans-serif;
     font-weight: 400;
@@ -25,6 +39,12 @@ export const Home = () => {
     <Styles>
       <PageHeader heading="Nathaniel Shuster" sub="Full Stack Web Developer" />
       <Container>
+        <Row>
+          <Col className="text-center">
+            <h2 className="hello">Hi, my name is Nate.</h2>
+            <h5 className="welcome">Welcome to my digital home.</h5>
+          </Col>
+        </Row>
         <Row>
           <Col className="text-center mt-2">
             <Button
