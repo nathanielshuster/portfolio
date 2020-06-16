@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { PageHeader } from '../components/PageHeader'
 import * as emailjs from 'emailjs-com'
 import styled from 'styled-components'
@@ -11,6 +11,7 @@ const Styles = styled.div`
     font-family: neue-haas-grotesk-display, sans-serif;
     font-weight: 400;
     font-style: normal;
+    border: none;
   }
 
   .button-custom {
@@ -26,6 +27,13 @@ const Styles = styled.div`
     color: #05386b;
     background-color: #edf5e1;
   }
+
+  .alert {
+    font-family: din-2014, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #05386b;
+  }
 `;
 
 export const Contact = () => {
@@ -34,6 +42,12 @@ export const Contact = () => {
     senderEmail: '',
     senderMessage: ''
   });
+
+  const [alert, setAlert] = useState({
+    hasAlert: false,
+    variant: '',
+    message: ''
+  })
 
   const updateField = e => {
     setSenderData({
@@ -49,32 +63,63 @@ export const Contact = () => {
       from_email: senderData.senderEmail,
       message_html: senderData.senderMessage
     }
-    // emailjs.send('gmail', 'template_8DMYxcnH', templateParams, ejsUserId)
-    //   .then((result) => {
-    //     console.log(result.text);
-    //   }, (error) => {
-    //     console.log(error.text);
-    //   });
+    emailjs.send('gmail', 'template_8DMYxcnH', templateParams, ejsUserId)
+      .then((result) => {
+        setAlert({
+          hasAlert: true,
+          variant: "success",
+          message: "Message sent."
+        })
+      }, (error) => {
+        setAlert({
+          hasAlert: true,
+          variant: "danger",
+          message: "Something went wrong."
+        })
+      });
   }
 
   return (
     <Styles>
       <PageHeader heading="Nathaniel Shuster" sub="Full Stack Web Developer" />
       <Container>
+        { !alert.hasAlert ? null :
+          <Row>
+            <Col>
+              <Alert className="text-center" variant={alert.variant}>
+                {alert.message}
+              </Alert>
+            </Col>
+          </Row>
+        }
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Form.Group as={Col} controlId="senderName">
-              <Form.Control type="text" placeholder="Name" onChange={updateField} />
+              <Form.Control
+                type="text"
+                className="shadow-none"
+                placeholder="Name"
+                value={senderData.senderName}
+                onChange={updateField} />
             </Form.Group>
 
             <Form.Group as={Col} controlId="senderEmail">
-              <Form.Control type="text" placeholder="Email" onChange={updateField} />
+              <Form.Control
+                type="text"
+                className="shadow-none"
+                placeholder="Email"
+                value={senderData.senderEmail}
+                onChange={updateField} />
             </Form.Group>
           </Form.Row>
 
           <Form.Row>
             <Form.Group as={Col} controlId="senderMessage">
-              <Form.Control as="textarea" placeholder="Message" onChange={updateField} />
+              <Form.Control
+                as="textarea"
+                className="shadow-none"
+                placeholder="Message"
+                onChange={updateField} />
             </Form.Group>
           </Form.Row>
 
